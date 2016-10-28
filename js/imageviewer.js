@@ -6,50 +6,44 @@ app.controller('imageViewer', function($scope, $http) {
     $http.get('data\\images.php')
         .then(function(response) {
             $scope.images = response.data.images;
+
+            angular.forEach($scope.images, function(image) {
+                angular.forEach(image.Tags, function(tag) {
+                    var newTag = {Name:tag, Checked:false};
+
+                    var found = $scope.tags.some(function (el) {
+                        return el.Name === newTag.Name;
+                    });
+
+                    if(!found)
+                    {
+                        $scope.tags.push(newTag);
+                    }
+                });
+            });
         }, function(response) {
             $scope.images = 'Something went wrong';
         });
-
-    $scope.avaiableTags = function(){
-        var out = [];
-        angular.forEach($scope.images, function(image) {
-            angular.forEach(image.Tags, function(tag) {
-                if(out.indexOf(tag) == -1)
-                {
-                    out.push(tag);
-                }
-            });
-        });
-        return out;
-    };
-
-    $scope.toggleTags = function(inputTag){
-        if($scope.tags.indexOf(inputTag) >= 0){
-            $scope.tags.pop(inputTag);
-        }else{
-            $scope.tags.push(inputTag);
-        }
-    };
-
-    $scope.isChecked = function(inputTag){
-        return $scope.tags.indexOf(inputTag) >= 0;
-    };
 });
 
 app.filter('imageList', function() {
     return function (images, tags) {
         var out = [];
-        angular.forEach(images, function(image) {
-            angular.forEach(tags, function(tag){
-                if(image.Tags.indexOf(tag) >= 0){
-                    if(out.indexOf(image) == -1)
-                    {
-                        out.push(image);
-                    }
-                }
-            });
-        });
+        angular.forEach(tags, function(tag) {
+            if(tag.Checked) {
+                angular.forEach(images, function(image) {
+                    angular.forEach(image.Tags, function(imagetag) {
+                        if(imagetag === tag.Name)
+                        {
+                            if(out.indexOf(image) == -1){
+                                out.push(image);
+                            }
 
+                        }
+                    })
+                })
+            }
+        });
         return out;
     };
 });
