@@ -2,10 +2,10 @@
 
 <p></p>
 
-<div class="switch" ng-repeat="tag in tags">
+<span class="switch" ng-repeat="tag in tags">
     <input id="cmn-toggle-{{tag.Name}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-model="tag.Checked">
-    <label for="cmn-toggle-{{tag.Name}}" data-on="{{tag.Name}}" data-off="{{tag.Name}}" ng-checked="tag.Checked"></label>
-</div>
+    <label for="cmn-toggle-{{tag.Name}}" data="{{tag.Name}}" ng-checked="tag.Checked"></label>
+</span>
 
 <p></p>
 
