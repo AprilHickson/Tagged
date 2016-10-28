@@ -30,6 +30,10 @@ app.controller('imageViewer', function($scope, $http) {
             $scope.tags.push(inputTag);
         }
     };
+
+    $scope.isChecked = function(inputTag){
+        return $scope.tags.indexOf(inputTag) >= 0;
+    };
 });
 
 app.filter('imageList', function() {

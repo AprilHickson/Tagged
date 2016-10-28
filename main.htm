@@ -1,5 +1,15 @@
 <span ng-repeat="tag in avaiableTags()"><button ng-click="toggleTags(tag)">{{tag}}</button></span>
 
+<p></p>
+
+<div class="switch" ng-repeat="tag in avaiableTags()">
+    {{isChecked(tag)}}
+    <input id="cmn-toggle-{{tag}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
+    <label for="cmn-toggle-{{tag}}" data-on="{{tag}}" data-off="{{tag}}" ng-click="toggleTags(tag)"></label>
+</div>
+
+<p></p>
+
 <li ng-repeat="image in images | imageList:tags">
     <img src={{image.Path}} alt={{image.Notes}} id="scrapbookImage">
 </li>
