@@ -1,3 +1,5 @@
-<li ng-repeat="image in images">
+<span ng-repeat="tag in avaiableTags()"><button ng-click="toggleTags(tag)">{{tag}}</button></span>
+
+<li ng-repeat="image in images | imageList:tags">
     <img src={{image.Path}} alt={{image.Notes}} id="scrapbookImage">
 </li>
