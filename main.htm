@@ -11,6 +11,6 @@
 
 <p></p>
 
-<li ng-repeat="image in images | imageList:tags">
+<ul ng-repeat="image in images | imageList:tags">
     <img src={{image.Path}} alt={{image.Notes}} id="scrapbookImage">
-</li>
+</ul>
