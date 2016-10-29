@@ -6,56 +6,52 @@
     height: auto;
 }
 
-/* Source: http://callmenick.com/post/css-toggle-switch-examples */
-.cmn-toggle {
-    position: absolute;
-    margin-left: -9999px;
-    visibility: hidden;
-}
-.cmn-toggle + label {
+.flipSwitch {
     display: inline-table;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
-}
-
-input.cmn-toggle-yes-no + label {
-    padding: 2px;
+    perspective: 800px;
     width: 10em;
     height: 30px;
+    position: relative;
+    overflow: hidden;
 }
-input.cmn-toggle-yes-no + label:before,
-input.cmn-toggle-yes-no + label:after {
-    content: attr(data);
-    display: block;
+.flipSwitch .card.checked {
+    transform: rotateY(-180deg);
+}
+.flipSwitch .card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+}
+.flipSwitch .card .face {
+    height: 100%;
+    width: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    color: #fff;
+    backface-visibility: hidden ;
+    z-index: 2;
     font-family: "Roboto Slab", serif;
     font-size: 20px;
     text-align: center;
     line-height: 30px;
 }
-input.cmn-toggle-yes-no + label:before {
-    background-color: #dddddd;
-    transition: transform 0.5s;
-    backface-visibility: hidden;
+.flipSwitch .card .front {
+    position: absolute;
+    z-index: 1;
+    background: #dddddd;
+    color: #fff;
+    cursor: pointer;
 }
-input.cmn-toggle-yes-no + label:after {
-    background-color: #8ce196;
-    content: attr(data);
-    transition: transform 0.5s;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
+.flipSwitch .card .back {
+    transform: rotateY(-180deg);
+    background: #8ce196;
+    color: #fff;
+    cursor: pointer;
 }
-input.cmn-toggle-yes-no:checked + label:before {
-    transform: rotateY(180deg);
+
+.flipSwitch .card .front:hover {
+    background: #cccccc;
 }
-input.cmn-toggle-yes-no:checked + label:after {
-    transform: rotateY(0deg);
+
+.flipSwitch .card .back:hover {
+    background: #71da7d;
 }
-/* End source: http://callmenick.com/post/css-toggle-switch-examples */

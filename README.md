@@ -10,6 +10,6 @@ Features:
 - Toggle Buttons Visible
 
 Future Features: (I.E. Checklist)
-- Change toggle buttons to something like (https://codepen.io/littlesnippets/pen/gwZyPp) and remove any borrowed code.
+- Image Layout
 - Drag and Drop Images.
 - Map from image locations.

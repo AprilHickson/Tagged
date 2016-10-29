@@ -1,11 +1,13 @@
-<span ng-repeat="tag in tags"><button ng-click="tag.Checked = !tag.Checked">{{tag.Name}}</button></span>
-
-<p></p>
-
-<span class="switch" ng-repeat="tag in tags">
-    <input id="cmn-toggle-{{tag.Name}}" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" ng-model="tag.Checked">
-    <label for="cmn-toggle-{{tag.Name}}" data="{{tag.Name}}" ng-checked="tag.Checked"></label>
-</span>
+<div class="flipSwitch" ng-repeat="tag in tags">
+    <div class="card" ng-class="{'checked':tag.Checked}" ng-click="tag.Checked=!tag.Checked">
+        <div class="face front draw">
+            {{tag.Name}}
+        </div>
+        <div class="face back draw">
+            {{tag.Name}}
+        </div>
+    </div>
+</div>
 
 <p></p>
 
